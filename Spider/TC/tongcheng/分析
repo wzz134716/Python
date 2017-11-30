@@ -1,0 +1,21 @@
+id                  #id号
+job_url				#职位详情链接
+job_comp			#公司名
+job_name			#职位名
+job_degree			#学历
+job_smoney			#最低薪资
+job_emoney			#最高薪资
+job_address			#公司地址
+job_comp_type			#公司类型（民营，国企）
+job_comp_snum			#公司规模（人数）
+job_comp_enum			#公司规模（人数）
+job_business			#公司主营 :行业
+job_syear			#工作经验
+job_eyear			#工作经验
+job_date_pub			#发布日期
+job_datetime			#爬取日志
+job_welfafe			#公司福利
+job_people			#//招的人数
+job_desc			#岗位职责
+job_request			#岗位要求
+job_tag				#职业标签 //java php等
