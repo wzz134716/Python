@@ -1,0 +1,84 @@
+{% extends "myweb/base.html" %}
+
+{% load static from staticfiles %}
+
+{% block mainbody %}
+
+    <form class="form-horizontal" role="form" class="col-md-6 col-md-offset-4" action="{% url 'ordertwo' %}" method="post">
+      {% csrf_token %}
+      <div class="form-group">
+        <label for="text" class="col-sm-4 control-label" ><h2>请确认订单信息</h2></label>
+      </div>
+      <br>
+
+      <div class="form-group">
+        <label for="inputEmail3" class="col-sm-4 control-label" >收货人姓名:</label>
+        <div class="col-sm-4">
+          <input type="text" class="form-control"  name='name' value="{{ request.session.user }}">
+        </div>
+      </div>
+      <br>
+
+      <div class="form-group">
+        <label for="inputtext3" class="col-sm-4 control-label">联系方式:</label>
+        <div class="col-sm-4">
+          <input type="text" class="form-control" name='phone' value="{{ request.session.phone }}">
+        </div>
+      </div>
+      <br>
+
+      <div class="form-group">
+        <label for="inputtext3" class="col-sm-4 control-label">收货地址：</label>
+        <div class="col-sm-4">
+          <input type="text" class="form-control" name="address" value="{{ request.session.address }}">
+        </div>
+      </div>
+      <br>
+
+      <div class="form-group">
+        <label for="inputtext3" class="col-sm-4 control-label">消费金额:</label>
+        <div class="col-sm-4">
+          <input type="text" class="form-control" id="inputtext3" readonly="" value="{{ request.session.total }}">
+        </div>
+      </div>
+      <br>
+
+
+      <div class="form-group">
+        <div class="table-responsive col-md-8 col-md-offset-2">
+          <table class="table table-hover">
+            <tr>
+              <th>id号</th>
+              <th>商品名称</th>
+              <th>图片</th>
+              <th>单价</th>
+              <th>数量</th>
+            </tr>
+  
+            {% for or in request.session.orderlist.values %}
+            <tr style="text-align:center,line-height:65px">
+              <th>{{ or.id }}</th>
+              <th>{{ or.goods }}</th>
+              <th><img src="/static/goods/L_{{ or.picname }}" width="60"/></th>
+              <th>{{ or.price }}</th>
+              <th>{{ or.m }}</th>
+            </tr>
+            {% endfor %}
+          </table>
+        </div>
+
+      </div>
+      <br>
+
+      <div class="form-group">
+        <label for="inputtext3" class="col-sm-4 col-sm-offset-5 control-label">
+            <button type="submit" class="btn btn-primary btn-lg"><a href="{% url 'shopcart' %}" style="color:#FFF">取消</a></button>
+            <button type="submit" class="btn btn-primary btn-lg">确认</button>
+        </label>
+      </div>
+      <br>
+
+    </form>
+
+
+{% endblock %}

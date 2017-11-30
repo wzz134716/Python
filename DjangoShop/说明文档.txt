@@ -1,0 +1,22 @@
+后台管理员账户:wzz
+	密码:123456
+前端用户账号:15518895193	
+	密码:123
+
+
+
+# 开发环境
+> Centos6.8
+> python3.6
+> django1.11
+
+>olefile (0.44)
+>Pillow (4.2.1)
+>pip (9.0.1)
+>PyMySQL (0.7.11)
+>pytz (2017.2)
+>setuptools (28.8.0)
+
+
+# 后台路径
+> myadmin

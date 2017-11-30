@@ -1,0 +1,86 @@
+{% extends "myweb/base.html" %}
+
+{% load static from staticfiles %}
+
+{% block mainbody %}                
+<div class="row">
+    <br> 
+    <br>
+    <br>
+
+    <form class="form-horizontal" role="form" class="col-md-6 col-md-offset-4" action="{% url 'doedit' my.id %}" method="post">
+      {% csrf_token %}
+      <div class="form-group">
+        <label for="inputEmail3" class="col-sm-4 control-label" ><h2>修改个人信息</h2></label>
+      </div>
+      <br>
+
+      <div class="form-group">
+        <label for="inputEmail3" class="col-sm-4 control-label" >账号：</label>
+        <div class="col-sm-4">
+          <input type="email" class="form-control" id="inputEmail3" readonly="" value="{{ my.username }}">
+        </div>
+      </div>
+      <br>
+
+      <div class="form-group">
+        <label for="inputtext3" class="col-sm-4 control-label">真实姓名：</label>
+        <div class="col-sm-4">
+          <input type="text" class="form-control" id="inputtext3" name='name' value="{{ my.name }}">
+          
+        </div>
+      </div>
+      <br>
+
+      <div class="form-group">
+        <label for="inputtext3" class="col-sm-4 control-label">性别：</label>
+        <div class="col-sm-4">
+          <input type="radio" {% if my.sex == 1 %} checked {% endif %} name="sex" class="input-xlarge" id="input01" value="1" /> 男
+          <input type="radio" {% if my.sex == 0 %} checked {% endif %} name="sex" class="input-xlarge" id="input01" value="0" /> 女
+        </div>
+      </div>
+      <br>
+
+      <div class="form-group">
+        <label for="inputtext3" class="col-sm-4 control-label">地址：</label>
+        <div class="col-sm-4">
+          <input type="text" class="form-control" id="inputtext3" name="address" value="{{ my.address }}">
+        </div>
+      </div>
+      <br>
+
+      <div class="form-group">
+        <label for="inputtext3" class="col-sm-4 control-label">邮编：</label>
+        <div class="col-sm-4">
+          <input type="text" class="form-control" id="inputtext3" name="code" value="{{ my.code }}">
+        </div>
+      </div>
+      <br>
+
+      <div class="form-group">
+        <label for="inputtext3" class="col-sm-4 control-label">电话：</label>
+        <div class="col-sm-4">
+          <input type="text" class="form-control" id="inputtext3" name="phone" value="{{ my.phone }}">
+        </div>
+      </div>
+      <br>
+
+      <div class="form-group">
+        <label for="inputtext3" class="col-sm-4 control-label">email邮箱：</label>
+        <div class="col-sm-4">
+          <input type="text" class="form-control" id="inputtext3" name="email" value="{{ my.email }}">
+        </div>
+      </div>
+      <br>
+
+      <div class="form-group">
+        <label for="inputtext3" class="col-sm-4 col-sm-offset-4 control-label">
+            <button type="submit" class="btn btn-primary btn-lg"><a href="{% url 'myindex' my.id %}" style="color:#FFF">取消</a></button>
+            <button type="submit" class="btn btn-primary btn-lg">确认</button>
+        </label>
+      </div>
+      <br>
+
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,67 @@
+{% extends "myweb/base.html" %}
+
+{% load static from staticfiles %}
+
+{% block mainbody %}
+
+    <form class="form-horizontal" role="form"  action="#">
+      {% csrf_token %}
+      <div class="form-group">
+        <label for="text" class="col-md-10 col-md-offset-1" style="margin-top: 30px"><h2>我的订单</h2></label>
+      </div>
+      <br>
+
+      <div class="form-group">
+        <div class="table-responsive col-md-10 col-md-offset-1">
+          <table class="table table-hover">
+            <tr>
+              <th>订单号</th>
+              <th>收货人姓名</th>
+              <th>联系方式</th>
+              <th>收货地址</th>
+              <th>商品名称</th>
+              <th>图片</th>
+              <th>单价</th>
+              <th>数量</th>
+              <th>消费金额</th>
+              <th>订单状态</th>
+            </tr>
+            
+  			    {% for order in orders %}
+            {% for detail in order.detaillist %}
+
+            <tr style="text-align:center,line-height:65px">
+
+              <th>{{ order.addtime }}SS{{ order.id }}</th>
+              <th>{{ order.linkman }}</th>
+              <th>{{ order.phone }}</th>
+              <th>{{ order.address }}</th>
+              <th>{{ detail.name }}</th>
+              <th><img src="/static/goods/L_{{ detail.picname }}" width="60"/></th>
+              <th>{{ detail.price }}</th>
+              <th>{{ detail.num }}</th>
+              <th>{{ order.total }}</th>
+              <th>{% if order.status == 0 %} 新订单 {% elif order.status == 1 %} 已发货 {% elif order.status == 1 %} 已收货 {% else %} 无效订单 {% endif %}</th>
+
+            </tr>
+
+            {% endfor %}
+            {% endfor %}
+
+          </table>
+        </div>
+
+      </div>
+      <br>
+
+      <div class="form-group">
+        <label for="inputtext3" class="col-sm-4 col-sm-offset-7 control-label">
+            <button type="submit" class="btn btn-primary btn-lg"><a href="/myindex/{{ request.session.zid }}" style="color:#FFF">返回</a></button>
+        </label>
+      </div>
+      <br>
+
+    </form>
+
+
+{% endblock %}
